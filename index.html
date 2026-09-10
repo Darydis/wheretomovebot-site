@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WhereToMove — личный отчёт о переезде</title>
+<meta name="description" content="Подбор города для переезда под твой паспорт, доход и образ жизни. Бесплатный подбор и платный личный отчёт: районы, виза, бюджет, план первой недели.">
+<meta property="og:title" content="WhereToMove — личный отчёт о переезде">
+<meta property="og:description" content="Подбор города под твой паспорт, доход и образ жизни. Районы, виза, бюджет и план первой недели.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --ground:#FBFAF8; --surface:#FFFFFF; --sunk:#F1EFEA;
+    --ink:#1B1D1A; --soft:#5C625B; --faint:#8A908A; --rule:#E2E0D9;
+    --accent:#2F6F4F; --accent-soft:#E6F0E9;
+    --sans:"Helvetica Neue",Arial,sans-serif;
+    --serif:Georgia,"Times New Roman",serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#141715; --surface:#1D211E; --sunk:#191D1A;
+      --ink:#E9EDE8; --soft:#A6ADA5; --faint:#7E857D; --rule:#2C322D;
+      --accent:#5FB68A; --accent-soft:#1A2A22;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--serif);
+       font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:44rem;margin:0 auto;padding:3rem 1.4rem 5rem}
+  h1,h2,h3,.label,.btn{font-family:var(--sans)}
+  h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 .8rem;font-weight:700}
+  .tagline{font-size:1.12rem;color:var(--soft);margin:0 0 2rem;max-width:34ch}
+  h2{font-size:1.3rem;margin:2.8rem 0 .8rem;letter-spacing:-.01em;font-weight:700}
+  h3{font-size:1rem;margin:0 0 .3rem;font-weight:600}
+  p{margin:0 0 .9rem}
+  ul{padding-left:1.2rem;margin:0 0 .9rem}
+  li{margin-bottom:.45rem}
+  a{color:var(--accent)}
+  .label{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);
+         font-weight:600;margin:0 0 .8rem}
+  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+       padding:.75rem 1.5rem;border-radius:3px;font-weight:600;font-size:.98rem}
+  .btn:hover{opacity:.9}
+  .cards{display:grid;gap:.9rem;margin:1.2rem 0}
+  @media(min-width:38rem){.cards{grid-template-columns:1fr 1fr}}
+  .card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:1.1rem 1.2rem}
+  .card p{font-size:.95rem;color:var(--soft);margin:0}
+  .price{background:var(--accent-soft);border-radius:4px;padding:1.3rem 1.4rem;margin:1.4rem 0}
+  .price .amt{font-family:var(--sans);font-size:1.7rem;font-weight:700;letter-spacing:-.02em}
+  .price p{font-size:.95rem;color:var(--soft);margin:.4rem 0 0}
+  table{width:100%;border-collapse:collapse;font-size:.95rem;margin:1rem 0}
+  th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
+  th{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+     color:var(--faint);font-weight:600}
+  footer{margin-top:3.5rem;padding-top:1.4rem;border-top:1px solid var(--rule);
+         font-size:.88rem;color:var(--faint)}
+  footer a{color:var(--soft)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="label">Telegram-бот · @wheretomove_bot</p>
+  <h1>Куда переехать — под твой паспорт, доход и образ жизни</h1>
+  <p class="tagline">Не список «лучших городов мира», а подбор под твою анкету: где тебя пустят, что ты потянешь и где тебе будет нормально жить.</p>
+
+  <p><a class="btn" href="https://t.me/wheretomove_bot">Открыть бота в Telegram</a></p>
+
+  <h2>Как это работает</h2>
+  <p>Отвечаешь на вопросы о климате, бюджете, гражданстве, работе и том, что тебе важно рядом с домом. Подбор считает по 46 тысячам городов и районов и показывает те, что подходят именно тебе — с причинами и честными компромиссами по каждому.</p>
+  <p><strong>Бесплатно</strong> — обзор по пяти странам, по городу на страну.</p>
+
+  <h2>Личный отчёт</h2>
+  <p>Платная часть отвечает на вопросы, из-за которых переезд обычно зависает на месяцы:</p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>А где именно жить?</h3>
+      <p>2–3 конкретных района в каждом городе под твой образ жизни: где искать жильё и чего избегать.</p>
+    </div>
+    <div class="card">
+      <h3>А меня туда пустят?</h3>
+      <p>Какая виза реально светит под твой паспорт: название, сроки, требования к доходу, чеклист документов.</p>
+    </div>
+    <div class="card">
+      <h3>А я потяну?</h3>
+      <p>Бюджет под твой доход и валюту: аренда, жизнь, медицина, какой нужен запас.</p>
+    </div>
+    <div class="card">
+      <h3>С чего начать?</h3>
+      <p>План первой недели: документы, жильё, чаты, проверки.</p>
+    </div>
+  </div>
+
+  <p>Отчёт идёт на уровне <strong>районов</strong>, а не городов: лучший район каждой подходящей страны. Собирается автоматически под твою анкету и приходит сразу после оплаты — прямо в чате.</p>
+
+  <div class="price">
+    <div class="amt">$29 · 2 900 ₽</div>
+    <p>Разовая оплата, не подписка. Картой или криптовалютой. Доступ открывается сразу после подтверждения платежа.</p>
+  </div>
+
+  <h2>Что входит в бесплатную часть, а что в платную</h2>
+  <table>
+    <thead><tr><th>Раздел</th><th>Бесплатно</th><th>В отчёте</th></tr></thead>
+    <tbody>
+      <tr><td>Подбор городов</td><td>5 стран, по городу на страну</td><td>уровень районов</td></tr>
+      <tr><td>Климат, бюджет, среда</td><td>да</td><td>да</td></tr>
+      <tr><td>Конкретные районы</td><td>—</td><td>2–3 на город</td></tr>
+      <tr><td>Виза под твой паспорт</td><td>—</td><td>маршруты, сроки, документы</td></tr>
+      <tr><td>План первой недели</td><td>—</td><td>да</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Откуда данные</h2>
+  <p>Визовые правила ведутся по официальным источникам государственных ведомств, у каждой строки есть ссылка на первоисточник. Климат — Open-Meteo, городская среда — OpenStreetMap, стоимость жизни — данные Всемирного банка. Где данных нет, отчёт так и говорит, а не подставляет догадку.</p>
+
+  <h2>Оплата и возврат</h2>
+  <p>Отчёт — цифровой товар, он формируется автоматически и доставляется в чат сразу после подтверждения оплаты.</p>
+  <p><!-- TODO: владельцу — вписать фактический порядок возврата, он нужен и покупателю, и платёжному провайдеру -->Порядок возврата уточняется.</p>
+
+  <h2>Контакты</h2>
+  <p>Вопросы по отчёту и оплате — в Telegram: <a href="https://t.me/wheretomove_bot">@wheretomove_bot</a>.</p>
+  <p><!-- TODO: владельцу — почта для связи, её спрашивают платёжные провайдеры -->E-mail для связи уточняется.</p>
+
+  <footer>
+    <p><a href="privacy.html">Политика конфиденциальности</a> · <a href="https://t.me/wheretomove_bot">@wheretomove_bot</a></p>
+    <p>Сервис даёт информационную справку по открытым и официальным источникам. Это не юридическая и не миграционная консультация: решения по визе принимают консульства и миграционные органы.</p>
+  </footer>
+
+</div>
+</body>
+</html>
