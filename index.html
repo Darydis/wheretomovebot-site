@@ -1,133 +1,400 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WhereToMove — личный отчёт о переезде</title>
-<meta name="description" content="Подбор города для переезда под твой паспорт, доход и образ жизни. Бесплатный подбор и платный личный отчёт: районы, виза, бюджет, план первой недели.">
-<meta property="og:title" content="WhereToMove — личный отчёт о переезде">
-<meta property="og:description" content="Подбор города под твой паспорт, доход и образ жизни. Районы, виза, бюджет и план первой недели.">
-<meta property="og:type" content="website">
-<style>
-  :root{
-    --ground:#FBFAF8; --surface:#FFFFFF; --sunk:#F1EFEA;
-    --ink:#1B1D1A; --soft:#5C625B; --faint:#8A908A; --rule:#E2E0D9;
-    --accent:#2F6F4F; --accent-soft:#E6F0E9;
-    --sans:"Helvetica Neue",Arial,sans-serif;
-    --serif:Georgia,"Times New Roman",serif;
-  }
-  @media (prefers-color-scheme:dark){
-    :root{
-      --ground:#141715; --surface:#1D211E; --sunk:#191D1A;
-      --ink:#E9EDE8; --soft:#A6ADA5; --faint:#7E857D; --rule:#2C322D;
-      --accent:#5FB68A; --accent-soft:#1A2A22;
-    }
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--serif);
-       font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:44rem;margin:0 auto;padding:3rem 1.4rem 5rem}
-  h1,h2,h3,.label,.btn{font-family:var(--sans)}
-  h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 .8rem;font-weight:700}
-  .tagline{font-size:1.12rem;color:var(--soft);margin:0 0 2rem;max-width:34ch}
-  h2{font-size:1.3rem;margin:2.8rem 0 .8rem;letter-spacing:-.01em;font-weight:700}
-  h3{font-size:1rem;margin:0 0 .3rem;font-weight:600}
-  p{margin:0 0 .9rem}
-  ul{padding-left:1.2rem;margin:0 0 .9rem}
-  li{margin-bottom:.45rem}
-  a{color:var(--accent)}
-  .label{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);
-         font-weight:600;margin:0 0 .8rem}
-  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
-       padding:.75rem 1.5rem;border-radius:3px;font-weight:600;font-size:.98rem}
-  .btn:hover{opacity:.9}
-  .cards{display:grid;gap:.9rem;margin:1.2rem 0}
-  @media(min-width:38rem){.cards{grid-template-columns:1fr 1fr}}
-  .card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:1.1rem 1.2rem}
-  .card p{font-size:.95rem;color:var(--soft);margin:0}
-  .price{background:var(--accent-soft);border-radius:4px;padding:1.3rem 1.4rem;margin:1.4rem 0}
-  .price .amt{font-family:var(--sans);font-size:1.7rem;font-weight:700;letter-spacing:-.02em}
-  .price p{font-size:.95rem;color:var(--soft);margin:.4rem 0 0}
-  table{width:100%;border-collapse:collapse;font-size:.95rem;margin:1rem 0}
-  th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
-  th{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
-     color:var(--faint);font-weight:600}
-  footer{margin-top:3.5rem;padding-top:1.4rem;border-top:1px solid var(--rule);
-         font-size:.88rem;color:var(--faint)}
-  footer a{color:var(--soft)}
-  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WhereToMove — подбор города и личный отчёт о переезде</title>
+  <meta name="description" content="Подбор городов для переезда под твой паспорт, бюджет и привычки. Бесплатно — города и сравнение. В личном отчёте — визовые маршруты и районы с проверенными данными.">
+  <meta name="theme-color" content="#f7f2e8">
+  <meta property="og:title" content="WhereToMove — найди город для переезда под свою жизнь">
+  <meta property="og:description" content="Подходящие города, честные компромиссы, визовые маршруты и районы с проверенными данными.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://wheretomovebot.com/assets/city-life.webp">
+  <meta name="wtm-analytics-endpoint" content="https://65-109-167-205.sslip.io:8443/api/event">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/city-life.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="/site.js" defer></script>
 </head>
 <body>
-<div class="wrap">
+  <a class="skip-link" href="#main">К содержанию</a>
 
-  <p class="label">Telegram-бот · @wheretomove_bot</p>
-  <h1>Куда переехать — под твой паспорт, доход и образ жизни</h1>
-  <p class="tagline">Не список «лучших городов мира», а подбор под твою анкету: где тебя пустят, что ты потянешь и где тебе будет нормально жить.</p>
-
-  <p><a class="btn" href="https://t.me/wheretomove_bot">Открыть бота в Telegram</a></p>
-
-  <h2>Как это работает</h2>
-  <p>Отвечаешь на вопросы о климате, бюджете, гражданстве, работе и том, что тебе важно рядом с домом. Подбор считает по 46 тысячам городов и районов и показывает те, что подходят именно тебе — с причинами и честными компромиссами по каждому.</p>
-  <p><strong>Бесплатно</strong> — обзор по пяти странам, по городу на страну.</p>
-
-  <h2>Личный отчёт</h2>
-  <p>Платная часть отвечает на вопросы, из-за которых переезд обычно зависает на месяцы:</p>
-
-  <div class="cards">
-    <div class="card">
-      <h3>А где именно жить?</h3>
-      <p>2–3 конкретных района в каждом городе под твой образ жизни: где искать жильё и чего избегать.</p>
+  <header class="site-header" aria-label="Основная навигация">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="WhereToMove — на главную">
+        <span class="brand-mark" aria-hidden="true">↗</span>
+        <span>WhereToMove</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Разделы страницы">
+        <a href="#benefits">Что получишь</a>
+        <a href="#demo">Пример отчёта</a>
+        <a href="#price">Стоимость</a>
+      </nav>
+      <a class="button button-small" data-cta="header" href="https://t.me/wheretomove_bot?start=ad_landing_header">Подобрать бесплатно</a>
     </div>
-    <div class="card">
-      <h3>А меня туда пустят?</h3>
-      <p>Какая виза реально светит под твой паспорт: название, сроки, требования к доходу, чеклист документов.</p>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Подбор города и личный отчёт о переезде</p>
+          <h1>Найди город для переезда — <span class="marker">под свою жизнь</span></h1>
+          <p class="hero-lead">Учтём твой паспорт, бюджет и привычки. Бесплатно покажем подходящие города и честные компромиссы. В личном отчёте — визовые маршруты и районы с проверенными данными.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" data-cta="hero" href="https://t.me/wheretomove_bot?start=ad_landing_hero">Подобрать города бесплатно <span aria-hidden="true">→</span></a>
+            <a class="button button-ghost" href="#demo">Посмотреть пример</a>
+          </div>
+          <ul class="offer-line" aria-label="Коротко об условиях">
+            <li>В Telegram</li>
+            <li>Начать бесплатно</li>
+            <li>Личный отчёт — 2 900 ₽ / $29, разово</li>
+          </ul>
+        </div>
+
+        <figure class="hero-visual reveal">
+          <img src="/assets/city-life.webp" width="1680" height="945" fetchpriority="high" alt="Тёплая жилая улица с кафе, велосипедами и морем вдали">
+          <figcaption class="photo-caption">Красивый вид — начало. Дальше посмотрим на бюджет, визу и повседневную жизнь.</figcaption>
+          <article class="result-card" aria-label="Пример карточки результата">
+            <div class="result-topline">
+              <span class="result-kicker">Твой пример</span>
+              <span class="score">84%</span>
+            </div>
+            <h2>🇪🇸 Аресифе</h2>
+            <p class="result-place">Канарские острова · Испания</p>
+            <div class="match-bars" aria-label="Параметры совпадения">
+              <div><span>После аренды</span><b>68%</b><i><em style="width:68%"></em></i></div>
+              <div><span>Климат</span><b>42%</b><i><em style="width:42%"></em></i></div>
+            </div>
+            <div class="chip-row"><span>море рядом</span><span>доступные цены</span><span>мягкая зима</span></div>
+            <p class="result-note"><b>Нужно учесть:</b> проверенного районного разбора пока нет — это будет видно до покупки.</p>
+          </article>
+        </figure>
+      </div>
+      <div class="ticker" aria-hidden="true">
+        <div>ПАСПОРТ <span>✦</span> БЮДЖЕТ <span>✦</span> КЛИМАТ <span>✦</span> РАЙОНЫ <span>✦</span> ПАРНЫЙ ВЫБОР <span>✦</span> ЧЕСТНЫЕ КОМПРОМИССЫ <span>✦</span></div>
+      </div>
+    </section>
+
+    <section class="section pains" id="benefits">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Знакомое состояние?</p>
+          <h2>Переезд завис между «хочу» и «а вдруг»?</h2>
+          <p>WhereToMove превращает десятки открытых вкладок в короткий список решений, привязанных к твоей ситуации.</p>
+        </div>
+        <div class="pain-grid">
+          <article class="pain-card coral reveal">
+            <span class="pain-number">01</span>
+            <h3>«Все советуют разные страны»</h3>
+            <p>Соберём твой топ городов и объясним, почему каждый оказался в нём.</p>
+          </article>
+          <article class="pain-card yellow reveal">
+            <span class="pain-number">02</span>
+            <h3>«Боюсь недооценить расходы»</h3>
+            <p>Сопоставим оценки аренды и питания с твоим бюджетом и покажем, что учтено.</p>
+          </article>
+          <article class="pain-card blue reveal">
+            <span class="pain-number">03</span>
+            <h3>«Не понимаю, как там остаться»</h3>
+            <p>В личном отчёте соберём известные визовые маршруты, условия и документы под ответы.</p>
+          </article>
+          <article class="pain-card green reveal">
+            <span class="pain-number">04</span>
+            <h3>«Мы никак не договоримся»</h3>
+            <p>Каждый ответит за себя, а сервис найдёт города, которые подходят вам обоим.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section demo-section" id="demo">
+      <div class="shell">
+        <div class="section-heading section-heading-light reveal">
+          <p class="eyebrow">Не верь на слово — полистай</p>
+          <h2>Вот что ты получишь</h2>
+          <p>Демонстрационный отчёт повторяет структуру продукта. Данные профиля вымышлены; твой результат зависит от ответов.</p>
+        </div>
+
+        <div class="demo-switch reveal" role="group" aria-label="Выбрать сценарий примера">
+          <button class="is-active" type="button" data-mode="solo" aria-pressed="true">Переезжаю один</button>
+          <button type="button" data-mode="pair" aria-pressed="false">Выбираем вдвоём</button>
+        </div>
+
+        <div class="demo-browser reveal">
+          <div class="demo-browser-top">
+            <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <p><span class="status-dot"></span> Пример личного отчёта</p>
+            <span class="demo-profile">профиль: море · тепло · бюджет</span>
+          </div>
+          <div class="demo-body">
+            <div class="demo-tabs" role="tablist" aria-label="Разделы примера отчёта">
+              <button id="tab-cities" class="is-active" type="button" role="tab" aria-selected="true" aria-controls="demo-panel" data-tab="cities">Города <small>бесплатно</small></button>
+              <button id="tab-compare" type="button" role="tab" aria-selected="false" aria-controls="demo-panel" tabindex="-1" data-tab="compare">Сравнение <small>бесплатно</small></button>
+              <button id="tab-districts" type="button" role="tab" aria-selected="false" aria-controls="demo-panel" tabindex="-1" data-tab="districts">Районы <small>в отчёте</small></button>
+              <button id="tab-visa" type="button" role="tab" aria-selected="false" aria-controls="demo-panel" tabindex="-1" data-tab="visa">Виза <small>в отчёте</small></button>
+            </div>
+
+            <div class="demo-panel" id="demo-panel" role="tabpanel" aria-live="polite" aria-labelledby="tab-cities">
+              <div data-panel="solo:cities">
+                <div class="panel-intro"><div><span class="panel-label free">Бесплатный подбор</span><h3>Города, которые прошли твои условия</h3></div><p>Сразу видно, почему место подходит и где потребуется компромисс.</p></div>
+                <div class="city-list">
+                  <article class="city-row featured"><span class="city-rank">1</span><div><h4>🇪🇸 Аресифе</h4><p>доступные цены · климат под тебя · мягкая зима</p></div><strong>84%</strong></article>
+                  <article class="city-row"><span class="city-rank">2</span><div><h4>🇪🇸 Лас-Пальмас</h4><p>море рядом · комфортно большую часть года</p></div><strong>83%</strong></article>
+                  <article class="city-row"><span class="city-rank">3</span><div><h4>🇵🇹 Фуншал</h4><p>мягкий климат · доступно при заданном бюджете</p></div><strong>82%</strong></article>
+                </div>
+                <p class="data-footnote">Пример рассчитан существующим движком для вымышленного профиля: один человек, паспорт РФ, доход $3 000, бюджет $2 500, важны море, тепло, безопасность и стоимость жизни.</p>
+              </div>
+
+              <div data-panel="solo:compare" hidden>
+                <div class="panel-intro"><div><span class="panel-label free">Бесплатно</span><h3>Сравнить с тем, где живёшь сейчас</h3></div><p>Одни и те же критерии вместо впечатлений из разных источников.</p></div>
+                <div class="compare-grid">
+                  <div class="compare-head"></div><div class="compare-head">Москва · сейчас</div><div class="compare-head accent">Аресифе</div>
+                  <div>Совпадение</div><strong>51%</strong><strong class="accent">84%</strong>
+                  <div>Аренда 1BR</div><span>$350–500</span><span>$650–950</span>
+                  <div>Зима</div><span>−5°C</span><span>+18°C</span>
+                  <div>Климат под профиль</div><span>8%</span><span>42%</span>
+                </div>
+                <p class="data-footnote">Стоимость жизни — калиброванные оценки, а не котировки. Состав и ограничения расчёта показаны в отчёте.</p>
+              </div>
+
+              <div data-panel="solo:districts" hidden>
+                <div class="panel-intro"><div><span class="panel-label paid">Личный отчёт</span><h3>Не только город, но и место внутри него</h3></div><p>Районы показываются там, где есть проверенное покрытие; доступность видна до покупки.</p></div>
+                <div class="district-grid">
+                  <article><span>01</span><h4>Barrio Rivera</h4><p>У моря · удобно ходить пешком</p><ul><li>ближе к повседневным маршрутам</li><li>спокойнее туристического центра</li></ul></article>
+                  <article><span>02</span><h4>Sarubbi</h4><p>У моря · красивая застройка</p><ul><li>пешеходная среда</li><li>кафе и сервисы рядом</li></ul></article>
+                </div>
+                <p class="data-footnote">Иллюстрация районного блока на данных демонстрационного отчёта по Maldonado, Уругвай.</p>
+              </div>
+
+              <div data-panel="solo:visa" hidden>
+                <div class="panel-intro"><div><span class="panel-label paid">Личный отчёт</span><h3>Что известно о въезде и долгом маршруте</h3></div><p>Факты, условия, последовательность и ссылки на официальные источники.</p></div>
+                <div class="visa-card">
+                  <div class="visa-state"><span>Маршрут требует проверки условий</span><b>Испания · паспорт РФ</b></div>
+                  <ol>
+                    <li><span>01</span><div><b>Проверить основание</b><p>Цифровой кочевник, пассивный доход и другие доступные маршруты.</p></div></li>
+                    <li><span>02</span><div><b>Сопоставить порог с доходом</b><p>В примере для основного маршрута указан требуемый доход и состав семьи.</p></div></li>
+                    <li><span>03</span><div><b>Собрать документы</b><p>Паспорт, подтверждение работы и дохода, страховка и справки — только когда они подтверждены данными.</p></div></li>
+                  </ol>
+                  <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2022-21739" rel="noopener noreferrer" target="_blank">Официальный источник ↗</a>
+                </div>
+                <p class="data-footnote">Сервис не обещает одобрение визы: решение принимают консульства и миграционные органы.</p>
+              </div>
+
+              <div data-panel="pair:cities" hidden>
+                <div class="panel-intro"><div><span class="panel-label free">Подбор вдвоём · бесплатно</span><h3>Общий топ без усреднения желаний</h3></div><p>Видно оценку каждого и причину, по которой город удержался в общем списке.</p></div>
+                <div class="pair-results">
+                  <article><div><span class="pair-rank">1</span><h4>🇵🇹 Лиссабон</h4></div><div class="two-scores"><span><i class="avatar-a">А</i> тебе <b>90%</b></span><span><i class="avatar-b">М</i> партнёру <b>72%</b></span></div><p>Тебе — море и климат. Партнёру — большой город и активная среда.</p></article>
+                  <article><div><span class="pair-rank">2</span><h4>🇩🇪 Берлин</h4></div><div class="two-scores"><span><i class="avatar-a">А</i> тебе <b>80%</b></span><span><i class="avatar-b">М</i> партнёру <b>75%</b></span></div><p>Самый ровный компромисс: работа, транспорт и культурная жизнь.</p></article>
+                </div>
+              </div>
+
+              <div data-panel="pair:compare" hidden>
+                <div class="panel-intro"><div><span class="panel-label free">Подбор вдвоём · бесплатно</span><h3>Где именно разошлись приоритеты</h3></div><p>Обсуждать можно конкретные различия, а не абстрактное «мне не нравится».</p></div>
+                <div class="preference-map">
+                  <div><span class="avatar-a">А</span><h4>Тебе важно</h4><p>🌊 море рядом</p><p>☀️ мягкая зима</p><p>💸 аренда до бюджета</p></div>
+                  <div class="overlap"><span>общее</span><b>6 городов</b><p>прошли условия у обоих</p></div>
+                  <div><span class="avatar-b">М</span><h4>Партнёру важно</h4><p>🏙 большой город</p><p>🎭 культурная жизнь</p><p>🚇 транспорт</p></div>
+                </div>
+              </div>
+
+              <div data-panel="pair:districts" hidden>
+                <div class="panel-intro"><div><span class="panel-label paid">Личный отчёт</span><h3>Район проверяется по общему выбору</h3></div><p>Сначала вы находите общий город, затем смотрите доступное районное покрытие.</p></div>
+                <div class="pair-locked">
+                  <span aria-hidden="true">⌖</span><div><h4>Районы откроются после общего топа</h4><p>До покупки сервис покажет, в каких выбранных городах районные данные уже проверены.</p></div>
+                </div>
+              </div>
+
+              <div data-panel="pair:visa" hidden>
+                <div class="panel-intro"><div><span class="panel-label paid">Личный отчёт</span><h3>Визовый маршрут не теряет второго человека</h3></div><p>Условия зависят от паспортов, дохода, состава пары и выбранного основания.</p></div>
+                <div class="visa-card compact">
+                  <div class="visa-state"><span>Сначала нужны ответы обоих</span><b>Паспорта · доход · срок переезда</b></div>
+                  <p>Отчёт показывает только те условия, которые подтверждены данными. Если важного факта нет, он не заменяется догадкой.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section plans" id="price">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Понятная граница</p>
+          <h2>Сначала пойми, куда смотреть. Потом — как действовать.</h2>
+        </div>
+        <div class="plan-grid">
+          <article class="plan-card free-plan reveal">
+            <div class="plan-top"><span class="panel-label free">Бесплатно</span><strong>0 ₽</strong></div>
+            <h3>Понять, куда смотреть</h3>
+            <p>Получи полезный результат до решения о покупке.</p>
+            <ul class="check-list">
+              <li>Подходящие города и причины выбора</li>
+              <li>Климат, среда и карта</li>
+              <li>Оценки аренды, питания и бюджета</li>
+              <li>Сравнение с текущим городом</li>
+              <li>Изменение ответов и приоритетов</li>
+              <li>Поиск по городу или стране</li>
+              <li>Подбор вдвоём и карточка для друзей</li>
+            </ul>
+            <a class="button button-dark" data-cta="free_card" href="https://t.me/wheretomove_bot?start=ad_landing_free">Начать подбор <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="plan-card paid-plan reveal">
+            <div class="sticker">разовая покупка</div>
+            <div class="plan-top"><span class="panel-label paid">Личный отчёт</span><strong>2 900 ₽ <small>/ $29</small></strong></div>
+            <h3>Разобраться с визой и районом</h3>
+            <p>Открой следующую глубину уже для своего списка городов.</p>
+            <ul class="check-list">
+              <li>Визовые маршруты под твои ответы</li>
+              <li>Известные условия и пороги по доходу</li>
+              <li>Документы и последовательность действий</li>
+              <li>Ссылки на официальные источники</li>
+              <li>Районы только с проверенным покрытием</li>
+              <li>Покрытие видно до покупки</li>
+            </ul>
+            <a class="button button-primary" data-cta="paid_card" href="https://t.me/wheretomove_bot?start=ad_landing_report">Сначала подобрать города <span aria-hidden="true">→</span></a>
+            <p class="payment-note">Для покупки цифрового отчёта внутри Telegram нужен checkout в Stars. После его подключения точная сумма в Stars и условия появятся перед оплатой; пока кнопка ведёт в работающий бесплатный подбор.</p>
+          </article>
+        </div>
+
+        <details class="feature-details reveal">
+          <summary>Показать полный состав услуг <span aria-hidden="true">+</span></summary>
+          <div class="feature-table-wrap">
+            <table>
+              <thead><tr><th>Что решает</th><th>Что получишь</th><th>Доступ</th></tr></thead>
+              <tbody>
+                <tr><td>Куда ехать</td><td>Персональный список городов с причинами и компромиссами</td><td><span class="access-free">Бесплатно</span></td></tr>
+                <tr><td>Как там жить</td><td>Климат, инфраструктура, среда и карта</td><td><span class="access-free">Бесплатно</span></td></tr>
+                <tr><td>Хватит ли денег</td><td>Оценки аренды, питания и остатка бюджета</td><td><span class="access-free">Бесплатно</span></td></tr>
+                <tr><td>Что лучше</td><td>Сравнение двух городов, включая текущий</td><td><span class="access-free">Бесплатно</span></td></tr>
+                <tr><td>Что будет, если изменить условия</td><td>Повторный расчёт после изменения ответов</td><td><span class="access-free">Бесплатно</span></td></tr>
+                <tr><td>Как выбрать вдвоём</td><td>Общий топ с оценками и пояснениями для каждого</td><td><span class="access-free">Бесплатно</span></td></tr>
+                <tr><td>Как проверить выбранное направление</td><td>Поиск информации о городе или стране без повторной анкеты</td><td><span class="access-free">Бесплатно</span></td></tr>
+                <tr><td>Как обсудить результат</td><td>Публичная карточка направлений для близких</td><td><span class="access-free">Бесплатно</span></td></tr>
+                <tr><td>Как остаться</td><td>Визовые маршруты, известные условия и документы</td><td><span class="access-paid">Личный отчёт</span></td></tr>
+                <tr><td>Где искать жильё</td><td>Районы в городах с проверенным покрытием</td><td><span class="access-paid">Личный отчёт</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section pair-section" id="pair">
+      <div class="shell pair-grid">
+        <figure class="pair-photo reveal">
+          <img src="/assets/pair-planning.webp" width="1200" height="900" loading="lazy" alt="Пара вместе выбирает место для переезда за столиком кафе">
+          <figcaption>Компромисс — это город, в котором хорошо обоим, а не одинаково скучно каждому.</figcaption>
+        </figure>
+        <div class="pair-copy reveal">
+          <p class="eyebrow">Бесплатный режим для двоих</p>
+          <h2>Тебе — море. Партнёру — большой город. Где сойтись?</h2>
+          <p>Вы проходите анкету каждый за себя. WhereToMove ищет пересечение и показывает, чем город хорош для каждого.</p>
+          <ol class="steps-mini">
+            <li><span>1</span><div><b>Ответь за себя</b><p>Не пытайся заранее угадать желания партнёра.</p></div></li>
+            <li><span>2</span><div><b>Пригласи второго</b><p>Он пройдёт ту же анкету по своей ссылке.</p></div></li>
+            <li><span>3</span><div><b>Получите общий топ</b><p>С двумя оценками и объяснением каждого компромисса.</p></div></li>
+          </ol>
+          <a class="button button-dark" data-cta="pair" href="https://t.me/wheretomove_bot?start=ad_landing_pair">Начать подбор вдвоём <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section journey" id="how">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Три понятных шага</p>
+          <h2>От «куда бы поехать» до списка, который можно проверять</h2>
+        </div>
+        <div class="journey-grid">
+          <article class="journey-card reveal">
+            <div class="journey-number">01</div>
+            <h3>Расскажи, что важно</h3>
+            <p>Паспорт, бюджет, климат, работа, стоп-факторы и повседневные привычки. Необязательные вопросы можно пропустить.</p>
+            <div class="answer-chips"><span>🌊 море</span><span>💻 удалёнка</span><span>🐕 с собакой</span></div>
+          </article>
+          <article class="journey-card journey-screenshot reveal">
+            <div><div class="journey-number">02</div><h3>Сравни и уточни</h3><p>Посмотри города, сравни их с домом и измени ответы, если хочется проверить другой сценарий.</p></div>
+            <img src="/assets/product-cities.webp" width="430" height="1100" loading="lazy" alt="Экран WhereToMove со списком подобранных городов">
+          </article>
+          <article class="journey-card journey-screenshot reveal">
+            <div><div class="journey-number">03</div><h3>Проверь глубину</h3><p>До покупки увидишь районное покрытие. В отчёте откроются доступные районы и визовые маршруты.</p></div>
+            <img src="/assets/product-detail.webp" width="430" height="1100" loading="lazy" alt="Подробная карточка города в приложении WhereToMove">
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section trust-section" id="trust">
+      <div class="shell trust-grid">
+        <div class="trust-copy reveal">
+          <p class="eyebrow">Понятно, откуда вывод</p>
+          <h2>Результат можно проверить, а ограничения — увидеть</h2>
+          <p>Мы не выдаём рейтинг из воздуха. В отчёте видно, что подтянуло город вверх, что стало компромиссом и где заканчиваются подтверждённые данные.</p>
+          <div class="source-list" aria-label="Основные источники данных">
+            <span>OpenStreetMap <small>городская среда</small></span>
+            <span>Open-Meteo <small>климат</small></span>
+            <span>World Bank <small>уровень цен</small></span>
+            <span>Госведомства <small>визовые правила</small></span>
+          </div>
+        </div>
+        <article class="evidence-card reveal">
+          <div class="evidence-head"><div><span>Пример проверки</span><h3>🇪🇸 Аресифе</h3></div><strong>84%</strong></div>
+          <div class="evidence-row good"><span>Почему подходит</span><p>доступные цены · тепло · мягкая зима</p></div>
+          <div class="evidence-row warn"><span>Ограничение</span><p>проверенного районного разбора пока нет</p></div>
+          <div class="evidence-row"><span>Визовые данные проверены</span><p>24 августа 2026</p></div>
+          <div class="evidence-row"><span>Источник визового правила</span><p><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2022-21739" rel="noopener noreferrer" target="_blank">Boletín Oficial del Estado ↗</a></p></div>
+          <p class="evidence-note">Когда точного факта нет, отчёт обозначает пробел вместо уверенного предположения.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="faq">
+      <div class="shell faq-grid">
+        <div class="faq-title reveal">
+          <p class="eyebrow">Остались вопросы?</p>
+          <h2>Коротко о главном</h2>
+          <p>По вопросам отчёта и оплаты можно написать в Telegram: <a href="https://t.me/wheretomove_bot">@wheretomove_bot</a>.</p>
+        </div>
+        <div class="faq-list reveal">
+          <details><summary>Зачем нужен Telegram?<span aria-hidden="true">+</span></summary><p>Там открывается анкета, сохраняются ответы и приходит результат. Возвращаться к своему подбору можно с того же Telegram-аккаунта.</p></details>
+          <details><summary>Что я получу бесплатно?<span aria-hidden="true">+</span></summary><p>Подходящие города, причины выбора и компромиссы, климат, среду, карту, оценки бюджета, сравнение и возможность менять ответы. Подбор вдвоём тоже бесплатный.</p></details>
+          <details><summary>Что входит в личный отчёт?<span aria-hidden="true">+</span></summary><p>Визовые маршруты, известные условия и документы под твои ответы, а также районы в тех городах, где есть проверенное покрытие. Доступность районов показывается до покупки.</p></details>
+          <details><summary>Можно ли менять ответы?<span aria-hidden="true">+</span></summary><p>Да. Первый результат не обязан быть окончательным: меняй приоритеты и проверяй, как перестраивается список.</p></details>
+          <details><summary>Как работает подбор вдвоём?<span aria-hidden="true">+</span></summary><p>Один человек создаёт приглашение, второй проходит анкету за себя. Общий топ учитывает обе оценки и не включает место, которое одному явно не подходит.</p></details>
+          <details><summary>Что, если мои условия не сходятся?<span aria-hidden="true">+</span></summary><p>Сервис объяснит, на каком условии список стал пустым, и предложит явно ослабить конкретный фильтр. Условия не меняются без твоего решения.</p></details>
+          <details><summary>Как устроены оплата, доступ и возврат?<span aria-hidden="true">+</span></summary><p>Сейчас с лендинга можно пройти бесплатный подбор. Публикация продажи цифрового отчёта зависит от подключения checkout в Telegram Stars: до оплаты он покажет точную сумму и условия. Доступ должен выдаваться только после подтверждённого платежа и восстанавливаться на том же аккаунте. По вопросам оплаты и возврата напиши в <a href="https://t.me/wheretomove_bot">@wheretomove_bot</a>.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="shell final-cta-inner reveal">
+        <p class="eyebrow">Можно начать бесплатно</p>
+        <h2>Город мечты должен помещаться не только в мудборд, но и в твою жизнь.</h2>
+        <p>Начни с подбора. Платный отчёт понадобится только тогда, когда захочешь разобраться с визой и районом.</p>
+        <a class="button button-primary button-large" data-cta="final" href="https://t.me/wheretomove_bot?start=ad_landing_final">Подобрать города бесплатно <span aria-hidden="true">→</span></a>
+        <span class="final-meta">Telegram · бесплатно · ответы можно менять</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">↗</span><span>WhereToMove</span></a><p>Персональный подбор места для жизни.</p></div>
+      <div><b>Продукт</b><a href="#demo">Пример отчёта</a><a href="#price">Что входит</a><a href="#pair">Подбор вдвоём</a></div>
+      <div><b>Поддержка</b><a href="https://t.me/wheretomove_bot">@wheretomove_bot</a><a href="/privacy.html">Конфиденциальность</a></div>
+      <p class="legal">Сервис даёт информационную справку по открытым и официальным источникам. Это не юридическая или миграционная консультация: решения по визе принимают консульства и миграционные органы.</p>
     </div>
-    <div class="card">
-      <h3>А я потяну?</h3>
-      <p>Бюджет под твой доход и валюту: аренда, жизнь, медицина, какой нужен запас.</p>
-    </div>
-    <div class="card">
-      <h3>С чего начать?</h3>
-      <p>План первой недели: документы, жильё, чаты, проверки.</p>
-    </div>
-  </div>
-
-  <p>Отчёт идёт на уровне <strong>районов</strong>, а не городов: лучший район каждой подходящей страны. Собирается автоматически под твою анкету и приходит сразу после оплаты — прямо в чате.</p>
-
-  <div class="price">
-    <div class="amt">$29 · 2 900 ₽</div>
-    <p>Разовая оплата, не подписка. Картой или криптовалютой. Доступ открывается сразу после подтверждения платежа.</p>
-  </div>
-
-  <h2>Что входит в бесплатную часть, а что в платную</h2>
-  <table>
-    <thead><tr><th>Раздел</th><th>Бесплатно</th><th>В отчёте</th></tr></thead>
-    <tbody>
-      <tr><td>Подбор городов</td><td>5 стран, по городу на страну</td><td>уровень районов</td></tr>
-      <tr><td>Климат, бюджет, среда</td><td>да</td><td>да</td></tr>
-      <tr><td>Конкретные районы</td><td>—</td><td>2–3 на город</td></tr>
-      <tr><td>Виза под твой паспорт</td><td>—</td><td>маршруты, сроки, документы</td></tr>
-      <tr><td>План первой недели</td><td>—</td><td>да</td></tr>
-    </tbody>
-  </table>
-
-  <h2>Откуда данные</h2>
-  <p>Визовые правила ведутся по официальным источникам государственных ведомств, у каждой строки есть ссылка на первоисточник. Климат — Open-Meteo, городская среда — OpenStreetMap, стоимость жизни — данные Всемирного банка. Где данных нет, отчёт так и говорит, а не подставляет догадку.</p>
-
-  <h2>Оплата и возврат</h2>
-  <p>Отчёт — цифровой товар, он формируется автоматически и доставляется в чат сразу после подтверждения оплаты.</p>
-  <p><!-- TODO: владельцу — вписать фактический порядок возврата, он нужен и покупателю, и платёжному провайдеру -->Порядок возврата уточняется.</p>
-
-  <h2>Контакты</h2>
-  <p>Вопросы по отчёту и оплате — в Telegram: <a href="https://t.me/wheretomove_bot">@wheretomove_bot</a>.</p>
-  <p><!-- TODO: владельцу — почта для связи, её спрашивают платёжные провайдеры -->E-mail для связи уточняется.</p>
-
-  <footer>
-    <p><a href="privacy.html">Политика конфиденциальности</a> · <a href="https://t.me/wheretomove_bot">@wheretomove_bot</a></p>
-    <p>Сервис даёт информационную справку по открытым и официальным источникам. Это не юридическая и не миграционная консультация: решения по визе принимают консульства и миграционные органы.</p>
   </footer>
 
-</div>
+  <a class="mobile-cta" data-cta="sticky" href="https://t.me/wheretomove_bot?start=ad_landing_sticky">Подобрать бесплатно <span aria-hidden="true">→</span></a>
+
+  <aside class="consent" hidden aria-label="Настройки аналитики">
+    <p>Можно анонимно считать просмотры и клики, чтобы улучшать страницу?</p>
+    <div><button type="button" data-consent="accept">Разрешить</button><button type="button" data-consent="decline">Только необходимые</button></div>
+  </aside>
 </body>
 </html>
