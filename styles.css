@@ -357,7 +357,7 @@ p { margin-bottom: 1rem; }
 .answer-chips span { padding: 8px 12px; border: 1px solid rgba(24, 32, 27, .22); border-radius: 999px; background: rgba(255, 255, 255, .65); font-size: .76rem; }
 .journey-screenshot { display: grid; grid-template-rows: auto 1fr; }
 .journey-screenshot .journey-number { margin-bottom: 28px; }
-.journey-screenshot img { width: min(270px, 84%); margin: 28px auto -260px; border: 6px solid #15243a; border-radius: 36px; box-shadow: 0 20px 44px rgba(16, 29, 25, .24); }
+.journey-screenshot img { width: min(270px, 84%); height: auto; align-self: start; margin: 28px auto -260px; border: 6px solid #15243a; border-radius: 36px; box-shadow: 0 20px 44px rgba(16, 29, 25, .24); }
 
 .trust-section { background: var(--forest-dark); color: white; }
 .trust-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: clamp(50px, 8vw, 110px); }
