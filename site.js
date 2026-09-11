@@ -59,7 +59,7 @@
     })
     panels.forEach((panel) => { panel.hidden = panel.dataset.panel !== `${mode}:${tab}` })
     if (demoPanel) demoPanel.setAttribute('aria-labelledby', `tab-${tab}`)
-    if (demoProfile) demoProfile.textContent = mode === 'solo' ? 'профиль: море · тепло · бюджет' : 'два профиля · один общий топ'
+    if (demoProfile) demoProfile.textContent = mode === 'solo' ? 'пожелания: море · тепло · доступные цены' : 'две анкеты · один общий список'
     if (shouldTrack) track('landing_demo', { mode, tab })
   }
 

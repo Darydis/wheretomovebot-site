@@ -315,7 +315,8 @@ p { margin-bottom: 1rem; }
 .plan-card > p { color: var(--ink-2); }
 .check-list { display: grid; gap: 12px; margin: 18px 0 34px; padding: 0; list-style: none; }
 .check-list li { position: relative; padding-left: 28px; }
-.check-list li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; background: rgba(255, 255, 255, .6); color: var(--forest-dark); font-size: .7rem; font-weight: 900; }
+.check-list li::before { content: ""; position: absolute; left: 0; top: 1px; width: 20px; height: 20px; border-radius: 50%; background: rgba(255, 255, 255, .6); }
+.check-list li::after { content: ""; position: absolute; left: 7px; top: 5px; width: 5px; height: 9px; border-right: 2px solid var(--forest-dark); border-bottom: 2px solid var(--forest-dark); transform: rotate(45deg); }
 .plan-card > .button { align-self: flex-start; margin-top: auto; }
 .payment-note { margin: 18px 0 0 !important; font-size: .72rem; line-height: 1.45; }
 .sticker { position: absolute; right: 32px; top: -16px; padding: 8px 15px; border: 1px solid var(--ink); border-radius: 4px; transform: rotate(3deg); background: var(--yellow); font-family: var(--serif); font-size: .85rem; font-style: italic; }
