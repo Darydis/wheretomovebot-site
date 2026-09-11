@@ -13,9 +13,9 @@
   <meta name="wtm-analytics-endpoint" content="https://65-109-167-205.sslip.io:8443/api/event">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/city-life.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="/styles.css?v=20260911-visa">
+  <link rel="stylesheet" href="/styles.css?v=20260911-districts">
   <script>document.documentElement.classList.add('js')</script>
-  <script src="/site.js" defer></script>
+  <script src="/site.js?v=20260911-districts" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">К содержанию</a>
@@ -41,7 +41,7 @@
         <div class="hero-copy reveal">
           <p class="eyebrow">Подбор города и личный отчёт о переезде</p>
           <h1>Найди город для переезда — <span class="marker">под свою жизнь</span></h1>
-          <p class="hero-lead">Учтём твой паспорт, бюджет и привычки. Бесплатно подберём города, объясним плюсы каждого и предупредим об ограничениях. В личном отчёте разберём визовые маршруты и районы, по которым есть проверенные данные.</p>
+          <p class="hero-lead">Учтём твой паспорт, бюджет и привычки. Бесплатно подберём города, покажем расходы и то, что будет рядом. В личном отчёте разберём визовые маршруты и конкретные районы: аренду, транспорт и важные для тебя места.</p>
           <div class="hero-actions">
             <a class="button button-primary" data-cta="hero" href="https://t.me/wheretomove_bot?start=ad_landing_hero">Подобрать города бесплатно <span aria-hidden="true">→</span></a>
             <a class="button button-ghost" href="#demo">Посмотреть пример</a>
@@ -68,7 +68,7 @@
               <div><span>Подходящий климат</span><b>42%</b><i><em style="width:42%"></em></i></div>
             </div>
             <div class="chip-row"><span>море рядом</span><span>доступные цены</span><span>мягкая зима</span></div>
-            <p class="result-note"><b>Нужно учесть:</b> по Арресифе пока нет проверенных данных о районах. Сервис предупредит об этом до покупки.</p>
+            <p class="result-note"><b>Дальше в отчёте:</b> визовый маршрут и подробный разбор районов для городов, где он доступен.</p>
           </article>
         </figure>
       </div>
@@ -160,12 +160,36 @@
               </div>
 
               <div data-panel="solo:districts" hidden>
-                <div class="panel-intro"><div><span class="panel-label paid">Личный отчёт</span><h3>Где искать жильё</h3></div><p>Разбор районов доступен только для городов, по которым есть проверенные данные. Это будет видно до покупки.</p></div>
-                <div class="district-grid">
-                  <article><span>01</span><h4>Баррио-Ривера</h4><p>У моря · удобно ходить пешком</p><ul><li>магазины и привычные маршруты рядом</li><li>спокойнее, чем в туристическом центре</li></ul></article>
-                  <article><span>02</span><h4>Сарубби</h4><p>У моря · красивая застройка</p><ul><li>удобно передвигаться пешком</li><li>кафе и необходимые услуги рядом</li></ul></article>
+                <div class="panel-intro district-intro"><div><span class="panel-label paid">Фрагмент личного отчёта</span><h3>Как отличаются районы Мальдонадо</h3></div><p>По каждому району видны аренда, транспорт и места из твоей анкеты. В этом примере важны футбол, теннис, пицца и кофейни.</p></div>
+                <div class="district-report-grid">
+                  <article class="district-report-card district-blue">
+                    <div class="district-card-head"><div><span>01 · Мальдонадо</span><h4>Баррио-Ривера</h4></div><strong>67%</strong></div>
+                    <div class="district-tags"><span>у моря</span><span>удобно ходить пешком</span></div>
+                    <div class="district-rent"><span>Аренда квартиры с одной спальней</span><strong>$400–600 в месяц</strong><small>ориентировочная стоимость</small></div>
+                    <div class="district-metrics" aria-label="Оценки района Баррио-Ривера">
+                      <div><span>Пешеходность</span><b>75%</b><i><em style="width:75%"></em></i></div>
+                      <div><span>Транспорт</span><b>85%</b><i><em style="width:85%"></em></i></div>
+                      <div><span>Кафе и рестораны</span><b>64%</b><i><em style="width:64%"></em></i></div>
+                    </div>
+                    <div class="district-nearby"><b>Из выбранного найдено рядом</b><div><span>⚽ футбол · 48</span><span>🎾 теннис · 7</span><span>🍕 пицца · 7</span><span>☕ кофейни · 2</span></div></div>
+                    <div class="district-counts"><span>🌳 3 парка</span><span>🛒 69 магазинов и рынков</span></div>
+                    <a href="https://www.openstreetmap.org/?mlat=-34.9049983&amp;mlon=-54.9501862#map=15/-34.9049983/-54.9501862" rel="noopener noreferrer" target="_blank">Посмотреть на карте ↗</a>
+                  </article>
+                  <article class="district-report-card district-yellow">
+                    <div class="district-card-head"><div><span>02 · Мальдонадо</span><h4>Сарубби</h4></div><strong>67%</strong></div>
+                    <div class="district-tags"><span>у моря</span><span>красивая застройка</span></div>
+                    <div class="district-rent"><span>Аренда квартиры с одной спальней</span><strong>$400–600 в месяц</strong><small>ориентировочная стоимость</small></div>
+                    <div class="district-metrics" aria-label="Оценки района Сарубби">
+                      <div><span>Пешеходность</span><b>73%</b><i><em style="width:73%"></em></i></div>
+                      <div><span>Транспорт</span><b>85%</b><i><em style="width:85%"></em></i></div>
+                      <div><span>Кафе и рестораны</span><b>61%</b><i><em style="width:61%"></em></i></div>
+                    </div>
+                    <div class="district-nearby"><b>Из выбранного найдено рядом</b><div><span>⚽ футбол · 48</span><span>🎾 теннис · 7</span><span>🍕 пицца · 7</span><span>☕ кофейни · 2</span></div></div>
+                    <div class="district-counts"><span>🌳 3 парка</span><span>🛒 44 магазина и рынка</span></div>
+                    <a href="https://www.openstreetmap.org/?mlat=-34.9114316&amp;mlon=-54.9498052#map=15/-34.9114316/-54.9498052" rel="noopener noreferrer" target="_blank">Посмотреть на карте ↗</a>
+                  </article>
                 </div>
-                <p class="data-footnote">Так выглядит разбор районов в демонстрационном отчёте по Мальдонадо, Уругвай.</p>
+                <p class="data-footnote">Пример построен на данных настоящего отчёта по Мальдонадо, Уругвай. Числа показывают объекты, найденные в OpenStreetMap рядом с центром района; стоимость аренды дана как ориентир. В отчёте может быть до трёх районов, а для небольшого города — подходящие места поблизости.</p>
               </div>
 
               <div data-panel="solo:visa" hidden>
@@ -267,8 +291,10 @@
             <p>Бесплатного подбора достаточно, чтобы составить список городов и сравнить варианты.</p>
             <ul class="check-list">
               <li>Подходящие города и причины выбора</li>
-              <li>Климат, городская среда и карта</li>
-              <li>Оценка аренды, питания и остатка бюджета</li>
+              <li>Спорт, кухни, кафе, парки и магазины рядом</li>
+              <li>Пешеходность, транспорт, воздух и медицина</li>
+              <li>Климат, сезоны и карта</li>
+              <li>Аренда, продукты, кафе и три сценария питания</li>
               <li>Сравнение с текущим городом</li>
               <li>Изменение ответов и приоритетов</li>
               <li>Поиск по городу или стране</li>
@@ -286,7 +312,10 @@
               <li>Подтверждённые требования к доходу</li>
               <li>Документы и последовательность действий</li>
               <li>Ссылки на официальные источники</li>
-              <li>Разбор районов для городов с проверенными данными</li>
+              <li>До трёх подходящих районов с оценкой и объяснением</li>
+              <li>Аренда, транспорт и выбранные места в каждом районе</li>
+              <li>Ссылки на районы на карте</li>
+              <li>Подходящие места поблизости для небольших городов</li>
               <li>До покупки видно, для каких городов он доступен</li>
             </ul>
             <a class="button button-primary" data-cta="paid_card" href="https://t.me/wheretomove_bot?start=ad_landing_report">Сначала пройти бесплатный подбор <span aria-hidden="true">→</span></a>
@@ -301,15 +330,16 @@
               <thead><tr><th>Твой вопрос</th><th>Что даст сервис</th><th>Доступ</th></tr></thead>
               <tbody>
                 <tr><td>Куда переезжать</td><td>Личный список городов с объяснением плюсов и ограничений</td><td><span class="access-free">Бесплатно</span></td></tr>
-                <tr><td>Как устроена повседневная жизнь</td><td>Климат, инфраструктура, городская среда и карта</td><td><span class="access-free">Бесплатно</span></td></tr>
-                <tr><td>Хватит ли денег</td><td>Оценки аренды, питания и остатка бюджета</td><td><span class="access-free">Бесплатно</span></td></tr>
+                <tr><td>Что будет рядом</td><td>Выбранные виды спорта и кухни, кафе, парки, магазины, транспорт и пешеходность</td><td><span class="access-free">Бесплатно</span></td></tr>
+                <tr><td>Как устроена повседневная жизнь</td><td>Климат по сезонам, качество воздуха, медицина и карта</td><td><span class="access-free">Бесплатно</span></td></tr>
+                <tr><td>Хватит ли денег</td><td>Оценки аренды, продуктов, кафе и ресторана, остатка бюджета и трёх вариантов расходов на питание</td><td><span class="access-free">Бесплатно</span></td></tr>
                 <tr><td>Какой город лучше подходит</td><td>Сравнение двух городов, включая нынешний</td><td><span class="access-free">Бесплатно</span></td></tr>
                 <tr><td>Что изменится с другим бюджетом или климатом</td><td>Новый расчёт после изменения ответов</td><td><span class="access-free">Бесплатно</span></td></tr>
                 <tr><td>Как выбрать вдвоём</td><td>Общий список с оценкой и пояснением для каждого</td><td><span class="access-free">Бесплатно</span></td></tr>
                 <tr><td>Как проверить выбранное направление</td><td>Поиск информации о городе или стране без повторной анкеты</td><td><span class="access-free">Бесплатно</span></td></tr>
                 <tr><td>Как обсудить результат</td><td>Ссылка на результат, которой можно поделиться с близкими</td><td><span class="access-free">Бесплатно</span></td></tr>
                 <tr><td>Как остаться надолго</td><td>Визовые маршруты, подтверждённые требования и документы</td><td><span class="access-paid">Личный отчёт</span></td></tr>
-                <tr><td>Где искать жильё</td><td>Разбор районов в городах, по которым есть проверенные данные</td><td><span class="access-paid">Личный отчёт</span></td></tr>
+                <tr><td>Где искать жильё</td><td>До трёх районов с оценкой, арендой, картой и важными для тебя местами; для небольших городов — подходящие варианты поблизости</td><td><span class="access-paid">Личный отчёт</span></td></tr>
               </tbody>
             </table>
           </div>
@@ -356,7 +386,7 @@
           </article>
           <article class="journey-card journey-screenshot reveal">
             <div><div class="journey-number">03</div><h3>Уточни детали</h3><p>До покупки ты увидишь, для каких городов есть разбор районов. В личном отчёте откроются эти районы и визовые маршруты.</p></div>
-            <img src="/assets/product-detail.webp" width="430" height="1100" loading="lazy" alt="Подробная карточка города в приложении WhereToMove">
+            <img src="/assets/product-detail.webp" width="430" height="1100" loading="lazy" alt="Подробная карточка города с районами и местами рядом в приложении WhereToMove">
           </article>
         </div>
       </div>
@@ -395,8 +425,8 @@
         </div>
         <div class="faq-list reveal">
           <details><summary>Зачем нужен Telegram?<span aria-hidden="true">+</span></summary><p>Там открывается анкета, сохраняются ответы и приходит результат. Возвращаться к своему подбору можно с того же Telegram-аккаунта.</p></details>
-          <details><summary>Что я получу бесплатно?<span aria-hidden="true">+</span></summary><p>Список подходящих городов, их плюсы и ограничения, сведения о климате и городской среде, карту, оценку бюджета и сравнение вариантов. Ответы можно менять, а подбором можно пользоваться вдвоём.</p></details>
-          <details><summary>Что входит в личный отчёт?<span aria-hidden="true">+</span></summary><p>Подтверждённые визовые маршруты, требования и документы с учётом твоих ответов, а также разбор районов для городов, по которым есть проверенные данные. До покупки будет видно, для каких городов доступен разбор.</p></details>
+          <details><summary>Что я получу бесплатно?<span aria-hidden="true">+</span></summary><p>Список подходящих городов, их плюсы и ограничения, климат, карту и оценку бюджета. По каждому месту видно, что находится рядом: выбранные виды спорта и кухни, кафе, парки, магазины, транспорт и медицина. Можно сравнивать варианты, менять ответы и проходить подбор вдвоём.</p></details>
+          <details><summary>Что входит в личный отчёт?<span aria-hidden="true">+</span></summary><p>Визовые маршруты, требования и документы с учётом твоих ответов. Для городов с районным покрытием — до трёх подходящих районов с оценкой, арендой, транспортом, выбранными занятиями и ресторанами рядом, а также ссылкой на карту. Для небольшого города отчёт может показать подходящие места поблизости. Доступное покрытие видно до покупки.</p></details>
           <details><summary>Можно ли менять ответы?<span aria-hidden="true">+</span></summary><p>Да. Можно изменить бюджет, климат и другие пожелания, а затем посмотреть, как изменится список городов.</p></details>
           <details><summary>Как работает подбор вдвоём?<span aria-hidden="true">+</span></summary><p>Один человек создаёт приглашение, а партнёр заполняет свою анкету. В общем списке видно, насколько каждый город подходит обоим.</p></details>
           <details><summary>Что, если ни один город не подходит?<span aria-hidden="true">+</span></summary><p>Сервис покажет, какое условие исключило все варианты, и предложит изменить именно его. Без твоего решения ответы не меняются.</p></details>
