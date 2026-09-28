@@ -1,6 +1,10 @@
 (() => {
   'use strict'
 
+  // Content stays visible if this file is blocked or fails to load. Only enable
+  // reveal transitions after the script itself is running.
+  document.documentElement.classList.add('reveal-ready')
+
   const CONSENT_KEY = 'wtm_privacy_consent_v1'
   const CONSENT_VERSION = '2026-08-24'
   const DECISION_KEY = 'wtm_landing_consent_decision'
