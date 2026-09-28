@@ -125,7 +125,10 @@
 
   const consent = document.querySelector('.consent')
   const decision = storage.get(DECISION_KEY)
-  if (consent && !hasConsent() && decision !== 'declined') consent.hidden = false
+  if (consent && !hasConsent() && decision !== 'declined') {
+    // The banner must not cover the product proof during the first-read window.
+    window.setTimeout(() => { consent.hidden = false }, 9000)
+  }
   consent?.querySelector('[data-consent="accept"]')?.addEventListener('click', () => {
     storage.set(CONSENT_KEY, CONSENT_VERSION)
     storage.set(DECISION_KEY, 'accepted')
