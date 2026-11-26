@@ -13,9 +13,9 @@
   <meta name="wtm-analytics-endpoint" content="https://app.wheretomovebot.com:8443/api/event">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/product-cities.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="/styles.css?v=20260928-product">
+  <link rel="stylesheet" href="/styles.css?v=20261119-browser">
   <script>document.documentElement.classList.add('js')</script>
-  <script src="/site.js?v=20260928-product" defer></script>
+  <script src="/site.js?v=20261119-browser" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">К содержанию</a>
@@ -31,7 +31,7 @@
         <a href="#demo">Пример результата</a>
         <a href="#price">Что входит</a>
       </nav>
-      <a class="button button-small" data-cta="header" href="https://t.me/wheretomove_bot">Начать подбор</a>
+      <a class="button button-small" data-cta="header" href="https://app.wheretomovebot.com:8443/?view=survey">Пройти анкету</a>
     </div>
   </header>
 
@@ -41,14 +41,15 @@
         <div class="hero-copy reveal">
           <p class="eyebrow">Персональный подбор места для жизни</p>
           <h1>Получи до 10 <span class="marker">городов для переезда</span></h1>
-          <p class="hero-lead">Ответь на вопросы в Telegram — сервис сравнит 46&nbsp;624 места по паспорту, бюджету, климату и привычкам и объяснит компромиссы.</p>
+          <p class="hero-lead">Ответь на вопросы прямо на сайте — сервис сравнит 46&nbsp;624 места по бюджету, климату и привычкам и объяснит компромиссы. Визовый раздел пока приостановлен.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" data-cta="hero" href="https://app.wheretomovebot.com:8443/?view=survey">Пройти анкету <span aria-hidden="true">→</span></a>
+            <a class="button button-ghost" href="#demo">Посмотреть пример</a>
+          </div>
+          <p class="hero-alt">Удобнее в Telegram? <a href="https://t.me/wheretomove_bot">Открыть бота</a>.</p>
           <div class="mobile-inline-proof">
             <img src="/assets/product-cities.webp" width="430" height="1100" alt="Настоящий экран результата WhereToMove">
             <p><b>Настоящий экран результата</b><span>Оценка города, бюджет, климат и ограничения в одной карточке.</span></p>
-          </div>
-          <div class="hero-actions">
-            <a class="button button-primary" data-cta="hero" href="https://t.me/wheretomove_bot">Начать подбор <span aria-hidden="true">→</span></a>
-            <a class="button button-ghost" href="#demo">Посмотреть пример</a>
           </div>
           <ol class="hero-steps" aria-label="Как получить результат">
             <li><b>1</b><span>Ответь<br>на вопросы</span></li>
@@ -222,9 +223,9 @@
               <li>Сравнение с текущим городом</li>
               <li>Изменение ответов и приоритетов</li>
               <li>Поиск по городу или стране</li>
-              <li>Подбор вдвоём и ссылка на результат</li>
+              <li>Ссылка на список городов; подбор вдвоём — в Telegram</li>
             </ul>
-            <a class="button button-dark" data-cta="free_card" href="https://t.me/wheretomove_bot">Начать подбор</a>
+            <a class="button button-dark" data-cta="free_card" href="https://app.wheretomovebot.com:8443/?view=survey">Пройти анкету</a>
           </article>
           <article class="plan-card paid-plan reveal">
             <div class="sticker">готовится</div>
@@ -342,13 +343,13 @@
           <p>По вопросам о подборе можно написать в Telegram: <a href="https://t.me/wheretomove_bot">@wheretomove_bot</a>.</p>
         </div>
         <div class="faq-list reveal">
-          <details><summary>Зачем нужен Telegram?<span aria-hidden="true">+</span></summary><p>Там открывается анкета, сохраняются ответы и приходит результат. Возвращаться к своему подбору можно с того же Telegram-аккаунта.</p></details>
-          <details><summary>Что я получу бесплатно?<span aria-hidden="true">+</span></summary><p>Список подходящих городов, их плюсы и ограничения, климат, карту и оценку бюджета. По каждому месту видно, что находится рядом: выбранные виды спорта и кухни, кафе, парки, магазины, транспорт и медицина. Можно сравнивать варианты, менять ответы и проходить подбор вдвоём.</p></details>
+          <details><summary>Нужен ли Telegram?<span aria-hidden="true">+</span></summary><p>Для бесплатной анкеты и списка городов Telegram не нужен. На сайте ответы и результат сохраняются в этом браузере; в Telegram они автоматически не переносятся. Подбор вдвоём работает через бота.</p></details>
+          <details><summary>Что я получу бесплатно?<span aria-hidden="true">+</span></summary><p>Список подходящих городов, их плюсы и ограничения, климат, карту и оценку бюджета. По каждому месту видно, что находится рядом: выбранные виды спорта и кухни, кафе, парки, магазины, транспорт и медицина. Можно сравнивать варианты и менять ответы. Подбор вдвоём доступен через Telegram.</p></details>
           <details><summary>Когда откроется PRO?<span aria-hidden="true">+</span></summary><p>PRO пока недоступен: готовим визовые маршруты и районный разбор. Бесплатный подбор городов уже работает. В разделе PRO приложения можно попросить сообщить об открытии — бесплатно, одним сообщением в этом боте.</p></details>
           <details><summary>Можно ли менять ответы?<span aria-hidden="true">+</span></summary><p>Да. Можно изменить бюджет, климат и другие пожелания, а затем посмотреть, как изменится список городов.</p></details>
           <details><summary>Как работает подбор вдвоём?<span aria-hidden="true">+</span></summary><p>Один человек создаёт приглашение, а партнёр заполняет свою анкету. В общем списке видно, насколько каждый город подходит обоим.</p></details>
           <details><summary>Что, если ни один город не подходит?<span aria-hidden="true">+</span></summary><p>Сервис покажет, какое условие исключило все варианты, и предложит изменить именно его. Без твоего решения ответы не меняются.</p></details>
-          <details><summary>Как начать подбор?<span aria-hidden="true">+</span></summary><p>Открой Telegram-бот, ответь на вопросы и дождись результата. Анкету можно закрыть и продолжить позже с того же аккаунта.</p></details>
+          <details><summary>Как начать подбор?<span aria-hidden="true">+</span></summary><p>Нажми «Пройти анкету» и ответь на вопросы в браузере. Можно закрыть страницу и продолжить позже в том же браузере. Если удобнее Telegram, открой бота.</p></details>
         </div>
       </div>
     </section>
@@ -358,8 +359,8 @@
         <p class="eyebrow">Попробуй на своих условиях</p>
         <h2>Город должен нравиться не только на фотографиях, но и в обычной жизни.</h2>
         <p>Ответь на вопросы о бюджете, климате и повседневной жизни — сервис соберёт список городов и объяснит компромиссы.</p>
-        <a class="button button-primary button-large" data-cta="final" href="https://t.me/wheretomove_bot">Начать подбор <span aria-hidden="true">→</span></a>
-        <span class="final-meta">Анкета и результат открываются в Telegram</span>
+        <a class="button button-primary button-large" data-cta="final" href="https://app.wheretomovebot.com:8443/?view=survey">Пройти анкету <span aria-hidden="true">→</span></a>
+        <span class="final-meta">Анкета и бесплатный результат откроются на сайте</span>
       </div>
     </section>
   </main>
@@ -373,7 +374,7 @@
     </div>
   </footer>
 
-  <a class="mobile-cta" data-cta="sticky" href="https://t.me/wheretomove_bot">Начать подбор <span aria-hidden="true">→</span></a>
+  <a class="mobile-cta" data-cta="sticky" href="https://app.wheretomovebot.com:8443/?view=survey">Пройти анкету <span aria-hidden="true">→</span></a>
 
   <aside class="consent" hidden aria-label="Настройки аналитики">
     <p>Мы используем аналитику, чтобы улучшать работу сайта.</p>

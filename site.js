@@ -6,7 +6,7 @@
   document.documentElement.classList.add('reveal-ready')
 
   const CONSENT_KEY = 'wtm_privacy_consent_v1'
-  const CONSENT_VERSION = '2026-08-24'
+  const CONSENT_VERSION = '2026-11-19'
   const DECISION_KEY = 'wtm_landing_consent_decision'
   const CID_KEY = 'wtm_landing_cid_v1'
   const ANALYTICS_ENDPOINT = document.querySelector('meta[name="wtm-analytics-endpoint"]')?.content || '/api/event'
@@ -95,7 +95,7 @@
   document.querySelectorAll('[data-cta]').forEach((link) => {
     link.addEventListener('click', () => track('landing_cta', {
       placement: link.dataset.cta,
-      destination: 'telegram',
+      destination: link.hostname === 't.me' ? 'telegram' : 'website',
     }))
   })
 
