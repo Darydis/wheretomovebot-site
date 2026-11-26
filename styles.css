@@ -548,7 +548,9 @@ p { margin-bottom: 1rem; }
   .visa-source { align-items: flex-start; flex-direction: column; padding: 14px 18px; }
   .preference-map { grid-template-columns: 1fr; }
   .preference-map .overlap { min-height: 105px; width: 105px; margin: -34px auto; }
-  .plan-grid, .pair-grid, .journey-grid, .trust-grid, .faq-grid { grid-template-columns: 1fr; }
+  .plan-grid, .pair-grid, .journey-grid, .faq-grid { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: minmax(0, 1fr); }
+  .trust-copy, .evidence-card { min-width: 0; }
   .plan-card { min-height: auto; padding: 28px 22px; }
   .plan-card > .button { margin-top: 12px; align-self: stretch; }
   .paid-plan { margin-right: 7px; box-shadow: 7px 7px 0 var(--coral); }
@@ -603,6 +605,7 @@ p { margin-bottom: 1rem; }
   .hero-phone-main { left: 18px; width: 80%; }
   .hero-phone-detail { right: -145px; }
   .source-list { grid-template-columns: 1fr; }
+  .evidence-head { flex-wrap: wrap; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-grid > div:first-child, .legal { grid-column: auto; }
 }
