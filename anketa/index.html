@@ -15,15 +15,52 @@
 <body>
   <iframe title="Анкета WhereToMove" referrerpolicy="strict-origin-when-cross-origin"></iframe>
   <script>
+    const appOrigin = 'https://app.wheretomovebot.com:8443'
     const frame = document.querySelector('iframe')
-    const shared = new URLSearchParams(location.hash.slice(1)).get('shared')
-    if (shared && /^[A-Za-z0-9_-]{1,128}$/.test(shared)) {
-      frame.src = 'https://app.wheretomovebot.com:8443/?shared=' + encodeURIComponent(shared)
-      document.title = 'Общий список городов — WhereToMove'
-    } else {
-      frame.src = 'https://app.wheretomovebot.com:8443/?view=survey'
+    const knownLanguage = value => value === 'ru' || value === 'en'
+    let isShared = false
+
+    function displayLanguage(language) {
+      document.documentElement.lang = language
+      if (language === 'en') {
+        frame.title = isShared ? 'Shared WhereToMove shortlist' : 'WhereToMove questionnaire'
+        document.title = isShared ? 'Shared shortlist — WhereToMove' : 'Questionnaire — WhereToMove'
+      } else {
+        frame.title = isShared ? 'Общий список городов WhereToMove' : 'Анкета WhereToMove'
+        document.title = isShared ? 'Общий список городов — WhereToMove' : 'Анкета — WhereToMove'
+      }
     }
+
+    function openPage() {
+      const pageUrl = new URL(location.href)
+      const language = pageUrl.searchParams.get('lang')
+      const sharedId = new URLSearchParams(pageUrl.hash.slice(1)).get('shared')
+      isShared = !!sharedId && /^[A-Za-z0-9_-]{1,128}$/.test(sharedId)
+      const appUrl = new URL(appOrigin)
+      if (isShared) appUrl.searchParams.set('shared', sharedId)
+      else appUrl.searchParams.set('view', 'survey')
+      if (knownLanguage(language)) appUrl.searchParams.set('lang', language)
+      displayLanguage(language === 'en' ? 'en' : 'ru')
+      frame.src = appUrl.href
+    }
+
+    addEventListener('message', event => {
+      if (event.origin !== appOrigin || event.source !== frame.contentWindow) return
+      if (event.data?.type !== 'wheretomove:language' || !knownLanguage(event.data.language)) return
+      displayLanguage(event.data.language)
+      const pageUrl = new URL(location.href)
+      if (pageUrl.searchParams.get('lang') !== event.data.language) {
+        pageUrl.searchParams.set('lang', event.data.language)
+        history.replaceState(history.state, '', pageUrl)
+      }
+    })
+
+    addEventListener('hashchange', openPage)
+    openPage()
   </script>
-  <noscript><p>Для анкеты нужно включить JavaScript.</p></noscript>
+  <noscript>
+    <p lang="ru">Для анкеты нужно включить JavaScript.</p>
+    <p lang="en">Enable JavaScript to use the questionnaire.</p>
+  </noscript>
 </body>
 </html>

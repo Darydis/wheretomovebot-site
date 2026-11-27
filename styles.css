@@ -106,6 +106,27 @@ p { margin-bottom: 1rem; }
 .desktop-nav { margin-left: auto; display: flex; gap: 28px; }
 .desktop-nav a { color: var(--ink-2); font-size: .9rem; font-weight: 650; text-decoration: none; }
 .desktop-nav a:hover { color: var(--forest); }
+.site-language {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.site-language a {
+  display: inline-grid;
+  min-height: 44px;
+  place-items: center;
+  padding-inline: .7rem;
+  border-radius: 999px;
+  color: var(--forest);
+  font-size: .8rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+.site-language a:hover { text-decoration: underline; }
+.site-language [aria-current] { background: var(--forest); color: white; }
 
 .button {
   min-height: 48px;
@@ -470,7 +491,11 @@ p { margin-bottom: 1rem; }
   .journey-card:first-child .journey-number { margin-bottom: 48px; }
 }
 
-@media (max-width: 880px) {
+.localized-marker { white-space: normal; }
+
+@media (max-width: 980px) {
+  .header-inner { gap: 12px; }
+  .site-language { margin-left: auto; }
   .desktop-nav,
   .header-inner > .button {
     display: none;

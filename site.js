@@ -45,6 +45,7 @@
   const tabButtons = [...document.querySelectorAll('[data-tab]')]
   const panels = [...document.querySelectorAll('[data-panel]')]
   const demoProfile = document.querySelector('.demo-profile')
+  const soloProfile = demoProfile?.textContent
   const demoPanel = document.querySelector('#demo-panel')
   let mode = 'solo'
   let tab = 'cities'
@@ -63,7 +64,7 @@
     })
     panels.forEach((panel) => { panel.hidden = panel.dataset.panel !== `${mode}:${tab}` })
     if (demoPanel) demoPanel.setAttribute('aria-labelledby', `tab-${tab}`)
-    if (demoProfile) demoProfile.textContent = mode === 'solo' ? 'пожелания: море · теннис · кофейни рядом' : 'две анкеты · один общий список'
+    if (demoProfile) demoProfile.textContent = mode === 'solo' ? soloProfile : demoProfile.dataset.pairProfile
     if (shouldTrack) track('landing_demo', { mode, tab })
   }
 

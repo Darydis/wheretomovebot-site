@@ -13,9 +13,14 @@
   <meta name="wtm-analytics-endpoint" content="https://app.wheretomovebot.com:8443/api/event">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/product-cities.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="/styles.css?v=20261127-copy">
+  <link rel="stylesheet" href="/styles.css?v=20261127-language">
   <script>document.documentElement.classList.add('js')</script>
-  <script src="/site.js?v=20261119-browser" defer></script>
+  <script src="/site.js?v=20261127-language" defer></script>
+  <link rel="canonical" href="https://wheretomovebot.com/">
+  <link rel="alternate" hreflang="ru" href="https://wheretomovebot.com/">
+  <link rel="alternate" hreflang="en" href="https://wheretomovebot.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://wheretomovebot.com/">
+  <meta property="og:locale" content="ru_RU">
 </head>
 <body>
   <a class="skip-link" href="#main">К содержанию</a>
@@ -31,7 +36,11 @@
         <a href="#demo">Пример результата</a>
         <a href="#price">Что входит</a>
       </nav>
-      <a class="button button-small" data-cta="header" href="https://wheretomovebot.com/anketa/">Пройти анкету</a>
+      <nav class="site-language" aria-label="Язык сайта">
+        <a href="/" lang="ru" hreflang="ru" aria-current="page">Русский</a>
+        <a href="/en/" lang="en" hreflang="en">English</a>
+      </nav>
+      <a class="button button-small" data-cta="header" href="/anketa/?lang=ru">Пройти анкету</a>
     </div>
   </header>
 
@@ -43,7 +52,7 @@
           <h1>Получи до 10 <span class="marker">городов для переезда</span></h1>
           <p class="hero-lead">Ответь на вопросы прямо на сайте — сервис сравнит 46&nbsp;624 места по бюджету, климату и привычкам и объяснит компромиссы.</p>
           <div class="hero-actions">
-            <a class="button button-primary" data-cta="hero" href="https://wheretomovebot.com/anketa/">Пройти анкету <span aria-hidden="true">→</span></a>
+            <a class="button button-primary" data-cta="hero" href="/anketa/?lang=ru">Пройти анкету <span aria-hidden="true">→</span></a>
             <a class="button button-ghost" href="#demo">Посмотреть пример</a>
           </div>
           <p class="hero-alt">Удобнее в Telegram? <a href="https://t.me/wheretomove_bot">Открыть бота</a>.</p>
@@ -127,7 +136,7 @@
           <div class="demo-browser-top">
             <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
             <p><span class="status-dot"></span> Пример результата</p>
-            <span class="demo-profile">пожелания: море · тепло · доступные цены</span>
+            <span class="demo-profile" data-pair-profile="две анкеты · один общий список">пожелания: море · тепло · доступные цены</span>
           </div>
           <div class="demo-body">
             <div class="demo-tabs" role="tablist" aria-label="Разделы примера отчёта">
@@ -203,7 +212,7 @@
               <li>Поиск по городу или стране</li>
               <li>Ссылка на список городов; подбор вдвоём — в Telegram</li>
             </ul>
-            <a class="button button-dark" data-cta="free_card" href="https://wheretomovebot.com/anketa/">Пройти анкету</a>
+            <a class="button button-dark" data-cta="free_card" href="/anketa/?lang=ru">Пройти анкету</a>
           </article>
           <article class="plan-card paid-plan reveal">
             <div class="plan-top"><span class="panel-label paid">PRO</span><strong>Пока недоступен</strong></div>
@@ -334,7 +343,7 @@
         <p class="eyebrow">Попробуй на своих условиях</p>
         <h2>Город должен нравиться не только на фотографиях, но и в обычной жизни.</h2>
         <p>Ответь на вопросы о бюджете, климате и повседневной жизни — сервис соберёт список городов и объяснит компромиссы.</p>
-        <a class="button button-primary button-large" data-cta="final" href="https://wheretomovebot.com/anketa/">Пройти анкету <span aria-hidden="true">→</span></a>
+        <a class="button button-primary button-large" data-cta="final" href="/anketa/?lang=ru">Пройти анкету <span aria-hidden="true">→</span></a>
         <span class="final-meta">Анкета и бесплатный результат откроются на сайте</span>
       </div>
     </section>
@@ -349,7 +358,7 @@
     </div>
   </footer>
 
-  <a class="mobile-cta" data-cta="sticky" href="https://wheretomovebot.com/anketa/">Пройти анкету <span aria-hidden="true">→</span></a>
+  <a class="mobile-cta" data-cta="sticky" href="/anketa/?lang=ru">Пройти анкету <span aria-hidden="true">→</span></a>
 
   <aside class="consent" hidden aria-label="Настройки аналитики">
     <p>Мы используем аналитику, чтобы улучшать работу сайта.</p>
