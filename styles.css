@@ -158,7 +158,6 @@ p { margin-bottom: 1rem; }
 .hero-steps li { min-height: 76px; display: flex; align-items: center; gap: 9px; padding: 11px 9px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255, 253, 248, .62); }
 .hero-steps b { width: 27px; height: 27px; flex: 0 0 27px; display: grid; place-items: center; border-radius: 50%; background: var(--ink); color: white; font-size: .72rem; }
 .hero-steps span { color: var(--ink-2); font-size: .7rem; font-weight: 750; line-height: 1.25; }
-.hero-scope { margin: 9px 0 0; color: #6b746e; font-size: .68rem; line-height: 1.4; }
 .hero-visual {
   position: relative;
   min-height: 655px;
@@ -517,7 +516,7 @@ p { margin-bottom: 1rem; }
   .demo-browser-top p { justify-self: end; }
   .demo-profile { display: none; }
   .demo-body { display: block; min-height: 0; }
-  .demo-tabs { display: grid; grid-template-columns: repeat(4, minmax(96px, 1fr)); gap: 6px; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 10px; }
+  .demo-tabs { display: grid; grid-template-columns: repeat(2, minmax(96px, 1fr)); gap: 6px; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 10px; }
   .demo-tabs button { min-height: 52px; padding: 8px 10px; white-space: nowrap; }
   .demo-panel { min-height: 545px; padding: 24px 18px; }
   .panel-intro { grid-template-columns: 1fr; gap: 12px; }
