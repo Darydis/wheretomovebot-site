@@ -13,8 +13,17 @@
   </style>
 </head>
 <body>
-  <iframe title="Анкета WhereToMove" src="https://app.wheretomovebot.com:8443/?view=survey"
-    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  <iframe title="Анкета WhereToMove" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  <script>
+    const frame = document.querySelector('iframe')
+    const shared = new URLSearchParams(location.hash.slice(1)).get('shared')
+    if (shared && /^[A-Za-z0-9_-]{1,128}$/.test(shared)) {
+      frame.src = 'https://app.wheretomovebot.com:8443/?shared=' + encodeURIComponent(shared)
+      document.title = 'Общий список городов — WhereToMove'
+    } else {
+      frame.src = 'https://app.wheretomovebot.com:8443/?view=survey'
+    }
+  </script>
   <noscript><p>Для анкеты нужно включить JavaScript.</p></noscript>
 </body>
 </html>
